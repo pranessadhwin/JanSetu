@@ -4,66 +4,92 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin — JanSetu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <div id="site-nav"></div>
 
   <main class="container">
-    <h1 class="page-title">Administration</h1>
-    <p class="page-subtitle">Approve new accounts and reassign university assignments as needed.</p>
-
-    <div id="approval-alert"></div>
-    <div class="card">
-      <h3>Pending account approvals</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Organization</th>
-            <th>Requested</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="pending-users-body"></tbody>
-      </table>
-      <div id="pending-empty-state" class="empty-state hidden">No pending account approvals.</div>
+    <div class="page-header animate-in">
+      <h1 class="page-title">Administration</h1>
+      <p class="page-subtitle">Approve new accounts and reassign university assignments as needed.</p>
     </div>
 
-    <h2 class="page-title" style="font-size:1.3rem;">University assignments</h2>
-    <p class="page-subtitle">Review any university's assignments and reassign them if needed.</p>
+    <!-- Pending Approvals -->
+    <div class="section-label animate-in" style="animation-delay:.05s">
+      <span class="slabel-icon">✅</span>
+      <h2>Pending Account Approvals</h2>
+    </div>
 
-    <div class="card" style="max-width:420px;">
+    <div class="card animate-in" style="animation-delay:.1s">
+      <div id="approval-alert"></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Organization</th>
+              <th>Requested</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="pending-users-body"></tbody>
+        </table>
+      </div>
+      <div id="pending-empty-state" class="empty-state hidden">
+        <span class="es-icon">🎉</span>
+        No pending account approvals.
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- University Assignments -->
+    <div class="section-label animate-in" style="animation-delay:.15s">
+      <span class="slabel-icon">🎓</span>
+      <h2>University Assignments</h2>
+    </div>
+    <p class="page-subtitle" style="margin-bottom:1.25rem;">Review any university's assignments and reassign them if needed.</p>
+
+    <div class="card animate-in" style="max-width:480px;animation-delay:.2s">
       <label for="university-id">University ID</label>
-      <div class="inline-actions">
-        <input type="number" id="university-id" min="1" placeholder="e.g. 1" />
+      <div class="inline-actions" style="margin-top:0.5rem;">
+        <input type="number" id="university-id" min="1" placeholder="e.g. 1" style="max-width:180px;" />
         <button class="btn secondary" id="load-btn">Load assignments</button>
       </div>
     </div>
 
     <div id="alert-box"></div>
 
-    <div class="card hidden" id="assignments-card">
-      <table>
-        <thead>
-          <tr>
-            <th>Challenge</th>
-            <th>Domain</th>
-            <th>University</th>
-            <th>Status</th>
-            <th>Notes</th>
-            <th>Reassign to</th>
-          </tr>
-        </thead>
-        <tbody id="assignments-body"></tbody>
-      </table>
-      <div id="empty-state" class="empty-state hidden">No assignments found for this university yet.</div>
+    <div class="card hidden animate-in" id="assignments-card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Challenge</th>
+              <th>Domain</th>
+              <th>University</th>
+              <th>Status</th>
+              <th>Notes</th>
+              <th>Reassign to</th>
+            </tr>
+          </thead>
+          <tbody id="assignments-body"></tbody>
+        </table>
+      </div>
+      <div id="empty-state" class="empty-state hidden">
+        <span class="es-icon">📭</span>
+        No assignments found for this university yet.
+      </div>
     </div>
   </main>
 
-  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+  <footer class="site-footer"><strong>JanSetu</strong> — Civic engagement platform &copy; 2025</footer>
 
   <script src="js/api.js"></script>
   <script src="js/nav.js"></script>

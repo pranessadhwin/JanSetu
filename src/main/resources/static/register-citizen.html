@@ -4,42 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Register as Citizen — JanSetu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <div id="site-nav"></div>
 
-  <main class="container">
-    <h1 class="page-title">Create a citizen account</h1>
-    <p class="page-subtitle">Register to report civic challenges in your area.</p>
-
-    <div class="card" style="max-width:480px;">
-      <div id="alert-box"></div>
-      <form id="register-form" class="stacked">
-        <div>
-          <label for="name">Full name</label>
-          <input type="text" id="name" name="name" required />
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required autocomplete="email" />
-        </div>
-        <div>
-          <label for="phone">Phone (optional)</label>
-          <input type="tel" id="phone" name="phone" />
-        </div>
-        <div>
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" required minlength="6" autocomplete="new-password" />
-          <p class="help-text">At least 6 characters.</p>
-        </div>
-        <button type="submit" class="btn" id="register-submit">Create account</button>
-      </form>
-      <p class="help-text">Already registered? <a href="login.html">Login</a>.</p>
+  <main class="container auth-layout">
+    <div class="auth-card">
+      <div class="auth-card-header">
+        <div class="auth-logo">🙋</div>
+        <h1>Create a Citizen Account</h1>
+        <p>Register to report civic challenges in your area</p>
+      </div>
+      <div class="auth-card-body">
+        <div id="alert-box"></div>
+        <form id="register-form" class="stacked">
+          <div>
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" required placeholder="Your full name" />
+          </div>
+          <div>
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="phone">Phone <span class="muted" style="font-weight:400;">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000" />
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required minlength="6" autocomplete="new-password" placeholder="At least 6 characters" />
+          </div>
+          <button type="submit" class="btn" id="register-submit" style="width:100%;margin-top:0.5rem;">Create account</button>
+        </form>
+        <p class="help-text" style="text-align:center;margin-top:1.25rem;">
+          Already registered? <a href="login.html">Sign in</a>
+        </p>
+      </div>
     </div>
   </main>
 
-  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+  <footer class="site-footer"><strong>JanSetu</strong> — Civic engagement platform &copy; 2025</footer>
 
   <script src="js/api.js"></script>
   <script src="js/nav.js"></script>

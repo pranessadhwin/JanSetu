@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Challenge Details — JanSetu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -11,41 +14,79 @@
 
   <main class="container">
     <div id="alert-box"></div>
-    <div id="challenge-content" class="hidden">
-      <h1 class="page-title" id="c-title"></h1>
-      <p class="page-subtitle" id="c-meta"></p>
+    <div id="challenge-content" class="hidden animate-in">
+      <!-- Title + status badge at the top -->
+      <div class="page-header" style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;">
+        <div>
+          <h1 class="page-title" id="c-title"></h1>
+          <p class="page-subtitle" id="c-meta"></p>
+        </div>
+        <div id="c-status-badge" style="margin-top:0.5rem;"></div>
+      </div>
 
       <div class="grid grid-2">
+        <!-- Details -->
         <div class="card">
-          <h3>Details</h3>
-          <p id="c-description"></p>
-          <p><strong>Address:</strong> <span id="c-address"></span></p>
-          <p><strong>Coordinates:</strong> <span id="c-coords"></span></p>
-          <p><strong>Domain:</strong> <span id="c-domain"></span> <span id="c-confidence" class="muted"></span></p>
-          <p><strong>Status:</strong> <span id="c-status"></span></p>
+          <div class="card-header">
+            <span class="card-icon">📋</span>
+            <h3>Details</h3>
+          </div>
+          <p id="c-description" style="color:var(--clr-text-2);line-height:1.7;margin-bottom:1rem;"></p>
+          <table style="border:none;">
+            <tbody>
+              <tr>
+                <td style="font-weight:600;color:var(--clr-text);white-space:nowrap;padding-left:0;width:130px;">Address</td>
+                <td id="c-address" style="color:var(--clr-text-2);"></td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;color:var(--clr-text);padding-left:0;">Coordinates</td>
+                <td id="c-coords" style="color:var(--clr-text-2);font-family:monospace;font-size:0.85rem;"></td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;color:var(--clr-text);padding-left:0;">Domain</td>
+                <td>
+                  <span id="c-domain"></span>
+                  <span id="c-confidence" class="muted" style="font-size:0.8rem;"></span>
+                </td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;color:var(--clr-text);padding-left:0;border-bottom:none;">Status</td>
+                <td style="border-bottom:none;"><span id="c-status"></span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+
+        <!-- Attachments -->
         <div class="card">
-          <h3>Attachments</h3>
+          <div class="card-header">
+            <span class="card-icon">📎</span>
+            <h3>Attachments</h3>
+          </div>
           <div id="c-media" class="thumb-list"></div>
-          <p id="c-media-empty" class="muted hidden">No attachments were uploaded.</p>
+          <p id="c-media-empty" class="muted hidden" style="text-align:center;padding:2rem 0;">No attachments were uploaded.</p>
         </div>
       </div>
 
-      <div class="card hidden" id="override-card">
-        <h3>Override classification (Super Admin)</h3>
-        <form id="override-form" class="stacked">
+      <!-- Admin Override -->
+      <div class="card hidden animate-in" id="override-card">
+        <div class="card-header">
+          <span class="card-icon" style="background:#fdecea;">⚙️</span>
+          <h3>Override Classification <span class="badge-role" style="background:#6a3d9a;">Super Admin</span></h3>
+        </div>
+        <form id="override-form" class="stacked" style="max-width:380px;">
           <div>
             <label for="override-domain">Domain</label>
             <select id="override-domain"></select>
           </div>
-          <button type="submit" class="btn" id="override-submit">Save override</button>
+          <button type="submit" class="btn" id="override-submit">Save Override</button>
         </form>
-        <div id="override-alert"></div>
+        <div id="override-alert" style="margin-top:1rem;"></div>
       </div>
     </div>
   </main>
 
-  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+  <footer class="site-footer"><strong>JanSetu</strong> — Civic engagement platform &copy; 2025</footer>
 
   <script src="js/api.js"></script>
   <script src="js/nav.js"></script>

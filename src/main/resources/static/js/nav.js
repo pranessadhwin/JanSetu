@@ -8,14 +8,14 @@ function renderNav(activeId) {
 
   const session = Session.get();
   const links = [
-    { id: "home", href: "index.html", label: "Home" },
+    { id: "home",         href: "index.html",       label: "Home" },
     { id: "universities", href: "universities.html", label: "Universities" },
   ];
 
   if (session?.token) {
     if (session.role === "CITIZEN") {
-      links.push({ id: "submit", href: "submit-challenge.html", label: "Report an Issue" });
-      links.push({ id: "my-challenges", href: "my-challenges.html", label: "My Reports" });
+      links.push({ id: "submit",        href: "submit-challenge.html", label: "Report Issue" });
+      links.push({ id: "my-challenges", href: "my-challenges.html",    label: "My Reports" });
     }
     if (session.role === "UNIVERSITY_ADMIN") {
       links.push({ id: "university-assignments", href: "university-assignments.html", label: "Assignments" });
@@ -36,15 +36,21 @@ function renderNav(activeId) {
     .join("");
 
   const authHtml = session?.token
-    ? `<span class="muted">${escapeHtml(session.name)}<span class="badge-role">${session.role.replace("_", " ")}</span></span>
+    ? `<span class="nav-user">
+         <span>${escapeHtml(session.name)}</span>
+         <span class="badge-role">${session.role.replace(/_/g, " ")}</span>
+       </span>
        <button id="nav-logout-btn">Logout</button>`
     : `<a href="login.html" class="${activeId === "login" ? "active" : ""}">Login</a>
-       <a href="register.html" class="${activeId === "register" ? "active" : ""}">Register</a>`;
+       <a href="register.html" class="btn small ${activeId === "register" ? "active" : ""}" style="margin-left:0.25rem;">Get Started</a>`;
 
   mount.innerHTML = `
     <header class="site-header">
       <nav class="navbar">
-        <a class="brand" href="index.html">🏛️ JanSetu</a>
+        <a class="brand" href="index.html">
+          <span class="brand-icon">🏛️</span>
+          JanSetu
+        </a>
         <div class="nav-links">
           ${linkHtml}
           ${authHtml}

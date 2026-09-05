@@ -4,37 +4,51 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Reports — JanSetu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <div id="site-nav"></div>
 
   <main class="container">
-    <h1 class="page-title">My reported challenges</h1>
-    <p class="page-subtitle">Track the status of the civic issues you've submitted.</p>
+    <div class="page-header animate-in">
+      <h1 class="page-title">My Reported Challenges</h1>
+      <p class="page-subtitle">Track the status of the civic issues you've submitted.</p>
+    </div>
 
     <div id="alert-box"></div>
-    <div class="card">
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Address</th>
-            <th>Domain</th>
-            <th>Status</th>
-            <th>Submitted</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="challenges-body"></tbody>
-      </table>
+
+    <div class="card animate-in" style="animation-delay:.1s">
+      <div class="card-header">
+        <span class="card-icon">📋</span>
+        <h3>Your Reports</h3>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Address</th>
+              <th>Domain</th>
+              <th>Status</th>
+              <th>Submitted</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="challenges-body"></tbody>
+        </table>
+      </div>
       <div id="empty-state" class="empty-state hidden">
-        You haven't reported any challenges yet. <a href="submit-challenge.html">Report one now</a>.
+        <span class="es-icon">📭</span>
+        You haven't reported any challenges yet.
+        <a href="submit-challenge.html" class="btn small" style="margin-top:0.75rem;">Report an Issue</a>
       </div>
     </div>
   </main>
 
-  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+  <footer class="site-footer"><strong>JanSetu</strong> — Civic engagement platform &copy; 2025</footer>
 
   <script src="js/api.js"></script>
   <script src="js/nav.js"></script>

@@ -4,39 +4,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Industry Opportunities — JanSetu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <div id="site-nav"></div>
 
   <main class="container">
-    <h1 class="page-title">Solutions ready for industry support</h1>
-    <p class="page-subtitle">Universities have proposed these solutions. Pick one to mentor, fund, prototype, or deploy.</p>
+    <div class="page-header animate-in">
+      <h1 class="page-title">Solutions Ready for Industry Support</h1>
+      <p class="page-subtitle">Universities have proposed these solutions. Pick one to mentor, fund, prototype, or deploy.</p>
+    </div>
 
     <div id="alert-box"></div>
-    <section class="grid grid-2" id="solutions-grid"></section>
-    <div id="solutions-empty" class="empty-state hidden">No proposed solutions are available yet. Check back soon.</div>
 
-    <h2 class="page-title" style="font-size:1.3rem;">My engagements</h2>
-    <div class="card">
-      <table>
-        <thead>
-          <tr>
-            <th>Challenge</th>
-            <th>University</th>
-            <th>Solution</th>
-            <th>Type</th>
-            <th>Notes</th>
-            <th>Since</th>
-          </tr>
-        </thead>
-        <tbody id="engagements-body"></tbody>
-      </table>
-      <div id="engagements-empty" class="empty-state hidden">You haven't engaged with any solutions yet.</div>
+    <!-- Available Solutions -->
+    <div class="section-label animate-in" style="animation-delay:.05s">
+      <span class="slabel-icon">💡</span>
+      <h2>Available Opportunities</h2>
+    </div>
+
+    <section class="grid grid-2 animate-in" id="solutions-grid" style="animation-delay:.1s"></section>
+    <div id="solutions-empty" class="empty-state hidden animate-in" style="animation-delay:.1s">
+      <span class="es-icon">🔬</span>
+      No proposed solutions are available yet. Check back soon.
+    </div>
+
+    <div class="divider animate-in" style="animation-delay:.15s"></div>
+
+    <!-- My Engagements -->
+    <div class="section-label animate-in" style="animation-delay:.15s">
+      <span class="slabel-icon">🤝</span>
+      <h2>My Engagements</h2>
+    </div>
+
+    <div class="card animate-in" style="animation-delay:.2s">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Challenge</th>
+              <th>University</th>
+              <th>Solution</th>
+              <th>Type</th>
+              <th>Notes</th>
+              <th>Since</th>
+            </tr>
+          </thead>
+          <tbody id="engagements-body"></tbody>
+        </table>
+      </div>
+      <div id="engagements-empty" class="empty-state hidden">
+        <span class="es-icon">📭</span>
+        You haven't engaged with any solutions yet.
+      </div>
     </div>
   </main>
 
-  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+  <footer class="site-footer"><strong>JanSetu</strong> — Civic engagement platform &copy; 2025</footer>
 
   <script src="js/api.js"></script>
   <script src="js/nav.js"></script>

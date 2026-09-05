@@ -3,40 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Join JanSetu as a citizen, university or industry partner to help solve civic challenges." />
   <title>Register — JanSetu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <div id="site-nav"></div>
 
   <main class="container">
-    <h1 class="page-title">Join JanSetu</h1>
-    <p class="page-subtitle">Choose the type of account that fits you.</p>
+    <div class="page-header animate-in">
+      <h1 class="page-title">Join JanSetu</h1>
+      <p class="page-subtitle">Choose the type of account that fits your role.</p>
+    </div>
 
-    <section class="grid grid-3">
-      <div class="card">
-        <h3>🙋 Citizen / Local Body</h3>
-        <p class="muted">Report civic challenges — education, healthcare, agriculture, water, sanitation, and more.</p>
-        <a class="btn" href="register-citizen.html">Register as citizen</a>
+    <section class="grid grid-3 animate-in" style="animation-delay:.1s">
+
+      <div class="feature-card">
+        <div class="fc-icon">🙋</div>
+        <h3>Citizen / Local Body</h3>
+        <p>Report civic challenges — education, healthcare, agriculture, water, sanitation, and more.</p>
+        <a class="btn" href="register-citizen.html">Register as Citizen</a>
       </div>
-      <div class="card">
-        <h3>🎓 University (HEI)</h3>
-        <p class="muted">Get matched to problems by expertise, claim challenges, and propose solutions with student/faculty teams.</p>
-        <a class="btn" href="register-university.html">Register as university</a>
-        <p class="help-text">Requires Super Admin approval before login.</p>
+
+      <div class="feature-card">
+        <div class="fc-icon" style="background:#f5eefc;">🎓</div>
+        <h3>University (HEI)</h3>
+        <p>Get matched to problems by expertise, claim challenges, and propose solutions with your teams.</p>
+        <a class="btn" href="register-university.html" style="background:#6a3d9a;box-shadow:0 4px 14px rgba(106,61,154,.3);">Register as University</a>
+        <p class="help-text" style="margin-top:0.75rem;">Requires Super Admin approval before login.</p>
       </div>
-      <div class="card">
-        <h3>🏭 Industry / Startup / CSR</h3>
-        <p class="muted">Mentor, fund, prototype, or deploy university-proposed solutions.</p>
-        <a class="btn" href="register-industry.html">Register as industry</a>
-        <p class="help-text">Requires Super Admin approval before login.</p>
+
+      <div class="feature-card">
+        <div class="fc-icon" style="background:var(--clr-accent-light);">🏭</div>
+        <h3>Industry / Startup / CSR</h3>
+        <p>Mentor, fund, prototype, or deploy university-proposed solutions at scale.</p>
+        <a class="btn" href="register-industry.html" style="background:var(--clr-accent);box-shadow:0 4px 14px rgba(232,153,74,.35);">Register as Industry</a>
+        <p class="help-text" style="margin-top:0.75rem;">Requires Super Admin approval before login.</p>
       </div>
+
     </section>
 
-    <p class="help-text">Already registered? <a href="login.html">Login</a>.</p>
+    <p class="help-text" style="text-align:center;margin-top:1.5rem;">
+      Already registered? <a href="login.html">Sign in to your account</a>
+    </p>
   </main>
 
-  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+  <footer class="site-footer"><strong>JanSetu</strong> — Civic engagement platform &copy; 2025</footer>
 
   <script src="js/api.js"></script>
   <script src="js/nav.js"></script>
