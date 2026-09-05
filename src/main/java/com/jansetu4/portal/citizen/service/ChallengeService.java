@@ -12,6 +12,10 @@ import com.jansetu4.portal.classification.service.ClassificationService;
 import com.jansetu4.portal.common.enums.ChallengeStatus;
 import com.jansetu4.portal.common.enums.Role;
 import com.jansetu4.portal.common.exceptions.ResourceNotFoundException;
+import com.jansetu4.portal.localbody.entity.LocalBodyAssignment;
+import com.jansetu4.portal.localbody.repository.LocalBodyAssignmentRepository;
+import com.jansetu4.portal.university.entity.UniversityAssignment;
+import com.jansetu4.portal.university.repository.UniversityAssignmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
@@ -27,6 +31,8 @@ public class ChallengeService {
     private final ChallengeRepository challengeRepository;
     private final FileStorageService fileStorageService;
     private final ClassificationService classificationService;
+    private final UniversityAssignmentRepository universityAssignmentRepository;
+    private final LocalBodyAssignmentRepository localBodyAssignmentRepository;
 
     @Transactional
     public ChallengeResponse createChallenge(CreateChallengeRequest request, User currentUser) {
@@ -70,7 +76,8 @@ public class ChallengeService {
         Challenge challenge = challengeRepository.findDetailedById(challengeId)
                 .orElseThrow(() -> new ResourceNotFoundException("Challenge not found"));
 
-        boolean isAdmin = currentUser.getRole() == Role.SUPER_ADMIN || currentUser.getRole() == Role.UNIVERSITY_ADMIN;
+        boolean isAdmin = currentUser.getRole() == Role.SUPER_ADMIN || currentUser.getRole() == Role.UNIVERSITY_ADMIN
+                || currentUser.getRole() == Role.LOCAL_BODY_ADMIN;
         boolean isOwner = challenge.getSubmittedBy().getId().equals(currentUser.getId());
 
         if (!isAdmin && !isOwner) {
@@ -82,6 +89,23 @@ public class ChallengeService {
 
     private ChallengeResponse toResponse(Challenge challenge) {
         Classification classification = challenge.getClassification();
+
+        String routedToType = null;
+        String routedToName = null;
+        if (classification != null) {
+            java.util.Optional<UniversityAssignment> universityAssignment =
+                    universityAssignmentRepository.findByChallengeId(challenge.getId());
+            java.util.Optional<LocalBodyAssignment> localBodyAssignment =
+                    localBodyAssignmentRepository.findByChallengeId(challenge.getId());
+            if (universityAssignment.isPresent()) {
+                routedToType = "UNIVERSITY";
+                routedToName = universityAssignment.get().getUniversity().getName();
+            } else if (localBodyAssignment.isPresent()) {
+                routedToType = "LOCAL_BODY";
+                routedToName = localBodyAssignment.get().getLocalBody().getName();
+            }
+        }
+
         return ChallengeResponse.builder()
                 .id(challenge.getId())
                 .title(challenge.getTitle())
@@ -93,7 +117,9 @@ public class ChallengeService {
                 .submittedById(challenge.getSubmittedBy().getId())
                 .submittedByName(challenge.getSubmittedBy().getName())
                 .domain(classification != null ? classification.getDomain() : null)
-                .confidenceScore(classification != null ? classification.getConfidenceScore() : null)
+                .resolutionTrack(classification != null ? classification.getResolutionTrack() : null)
+                .routedToType(routedToType)
+                .routedToName(routedToName)
                 .createdAt(challenge.getCreatedAt())
                 .updatedAt(challenge.getUpdatedAt())
                 .media(challenge.getMedia().stream()

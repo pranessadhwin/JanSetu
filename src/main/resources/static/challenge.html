@@ -21,7 +21,9 @@
           <p id="c-description"></p>
           <p><strong>Address:</strong> <span id="c-address"></span></p>
           <p><strong>Coordinates:</strong> <span id="c-coords"></span></p>
-          <p><strong>Domain:</strong> <span id="c-domain"></span> <span id="c-confidence" class="muted"></span></p>
+          <p><strong>Domain:</strong> <span id="c-domain"></span></p>
+          <p><strong>Resolution track:</strong> <span id="c-track"></span></p>
+          <p><strong>Routed to:</strong> <span id="c-routed-to"></span></p>
           <p><strong>Status:</strong> <span id="c-status"></span></p>
         </div>
         <div class="card">
@@ -37,6 +39,13 @@
           <div>
             <label for="override-domain">Domain</label>
             <select id="override-domain"></select>
+          </div>
+          <div>
+            <label for="override-track">Resolution track</label>
+            <select id="override-track">
+              <option value="MUNICIPAL_ROUTINE">Municipal Routine (local body)</option>
+              <option value="INNOVATION_REQUIRED">Innovation Required (university)</option>
+            </select>
           </div>
           <button type="submit" class="btn" id="override-submit">Save override</button>
         </form>

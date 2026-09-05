@@ -4,6 +4,7 @@ import com.jansetu4.portal.citizen.entity.Challenge;
 import com.jansetu4.portal.common.BaseEntity;
 import com.jansetu4.portal.common.enums.ClassificationMethod;
 import com.jansetu4.portal.common.enums.Domain;
+import com.jansetu4.portal.common.enums.ResolutionTrack;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -37,13 +38,19 @@ public class Classification extends BaseEntity {
     @Column(nullable = false)
     private Domain domain;
 
-    @Column(name = "confidence_score", nullable = false)
-    private Double confidenceScore;
-
     @Column(name = "classified_at", nullable = false)
     private LocalDateTime classifiedAt;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ClassificationMethod method;
+
+    /**
+     * Whether this challenge is a routine issue for a local government body
+     * or requires an innovative solution from a university partner. Nullable
+     * to remain backward compatible with classifications created before this
+     * field existed.
+     */
+    @Enumerated(EnumType.STRING)
+    private ResolutionTrack resolutionTrack;
 }

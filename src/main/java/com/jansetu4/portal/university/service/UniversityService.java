@@ -66,6 +66,11 @@ public class UniversityService {
         challengeRepository.save(challenge);
     }
 
+    @Transactional
+    public void clearAssignment(Long challengeId) {
+        universityAssignmentRepository.deleteByChallengeId(challengeId);
+    }
+
     @Transactional(readOnly = true)
     public List<UniversityAssignmentResponse> getClaimableForUniversity(Long universityId) {
         University university = universityRepository.findById(universityId)

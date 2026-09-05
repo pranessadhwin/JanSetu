@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UniversityAssignmentRepository extends JpaRepository<UniversityAssignment, Long> {
 
@@ -61,4 +62,6 @@ public interface UniversityAssignmentRepository extends JpaRepository<University
 
     @Modifying
     void deleteByChallengeId(Long challengeId);
+
+    Optional<UniversityAssignment> findByChallengeId(Long challengeId);
 }

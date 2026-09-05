@@ -2,6 +2,7 @@ package com.jansetu4.portal.citizen.dto;
 
 import com.jansetu4.portal.common.enums.ChallengeStatus;
 import com.jansetu4.portal.common.enums.Domain;
+import com.jansetu4.portal.common.enums.ResolutionTrack;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,7 +27,9 @@ public class ChallengeResponse {
     private Long submittedById;
     private String submittedByName;
     private Domain domain;
-    private Double confidenceScore;
+    private ResolutionTrack resolutionTrack;
+    private String routedToType;
+    private String routedToName;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private List<ChallengeMediaResponse> media;

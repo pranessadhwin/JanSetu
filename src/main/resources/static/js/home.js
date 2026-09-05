@@ -67,7 +67,7 @@ async function loadHomeData() {
     const statsMount = document.getElementById("summary-stats");
     const statCards = [
       { label: "Total Challenges Reported", value: summary.totalChallenges },
-      ...summary.labels.map((label, i) => ({ label, value: summary.values[i] })),
+      ...summary.labels.map((label, i) => ({ label: formatEnum(label), value: summary.values[i] })),
     ];
     statsMount.innerHTML = statCards
       .map(
@@ -77,7 +77,7 @@ async function loadHomeData() {
       )
       .join("");
 
-    renderBarChart("chart-domain", byDomain.labels, byDomain.values, "Challenges");
+    renderBarChart("chart-domain", byDomain.labels.map(formatEnum), byDomain.values, "Challenges");
     renderBarChart("chart-university", byUniversity.labels, byUniversity.values, "Challenges");
     renderLineChart("chart-trend", trend.labels, trend.values, "Challenges");
   } catch (err) {

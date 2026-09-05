@@ -83,6 +83,21 @@ function formatDate(value) {
   return date.toLocaleString();
 }
 
+/**
+ * Converts a backend enum-style string (e.g. "URBAN_INFRASTRUCTURE",
+ * "IN_PROGRESS") into a friendly display label (e.g. "Urban Infrastructure",
+ * "In Progress"). Falls back to a dash for empty values.
+ */
+function formatEnum(value) {
+  if (!value) return "-";
+  return value
+    .toString()
+    .toLowerCase()
+    .split("_")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 function showAlert(container, message, type = "error") {
   if (!container) return;
   container.innerHTML = `<div class="alert ${type}">${escapeHtml(message)}</div>`;

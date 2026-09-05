@@ -32,10 +32,12 @@ async function loadChallenge() {
     document.getElementById("c-description").textContent = c.description;
     document.getElementById("c-address").textContent = c.address;
     document.getElementById("c-coords").textContent = `${c.latitude}, ${c.longitude}`;
-    document.getElementById("c-domain").textContent = c.domain || "Not classified yet";
-    document.getElementById("c-confidence").textContent =
-      c.confidenceScore != null ? `(confidence ${(c.confidenceScore * 100).toFixed(0)}%)` : "";
-    document.getElementById("c-status").innerHTML = `<span class="pill status-${c.status}">${c.status}</span>`;
+    document.getElementById("c-domain").textContent = c.domain ? formatEnum(c.domain) : "Not classified yet";
+    document.getElementById("c-track").textContent = c.resolutionTrack ? formatEnum(c.resolutionTrack) : "Not classified yet";
+    document.getElementById("c-routed-to").textContent = c.routedToName
+      ? `${c.routedToName} (${c.routedToType === "LOCAL_BODY" ? "Local Body" : "University"})`
+      : "Not routed yet";
+    document.getElementById("c-status").innerHTML = `<span class="pill status-${c.status}">${formatEnum(c.status)}</span>`;
 
     const mediaMount = document.getElementById("c-media");
     const mediaEmpty = document.getElementById("c-media-empty");
@@ -53,21 +55,26 @@ async function loadChallenge() {
     }
 
     if (session?.role === "SUPER_ADMIN") {
-      setupOverride(c.domain);
+      setupOverride(c.domain, c.resolutionTrack);
     }
   } catch (err) {
     showAlert(alertBox, err.message || "Could not load challenge details.");
   }
 }
 
-function setupOverride(currentDomain) {
+function setupOverride(currentDomain, currentTrack) {
   const card = document.getElementById("override-card");
   card.classList.remove("hidden");
 
   const select = document.getElementById("override-domain");
   select.innerHTML = DOMAINS.map(
-    (d) => `<option value="${d}" ${d === currentDomain ? "selected" : ""}>${d}</option>`
+    (d) => `<option value="${d}" ${d === currentDomain ? "selected" : ""}>${formatEnum(d)}</option>`
   ).join("");
+
+  const trackSelect = document.getElementById("override-track");
+  if (currentTrack) {
+    trackSelect.value = currentTrack;
+  }
 
   const form = document.getElementById("override-form");
   const overrideAlert = document.getElementById("override-alert");
@@ -80,7 +87,7 @@ function setupOverride(currentDomain) {
     try {
       await apiFetch(`/classification/${challengeId}/override`, {
         method: "POST",
-        body: { domain: select.value },
+        body: { domain: select.value, resolutionTrack: trackSelect.value },
       });
       showAlert(overrideAlert, "Classification updated.", "success");
       loadChallenge();

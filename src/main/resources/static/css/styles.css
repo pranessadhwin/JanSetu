@@ -11,10 +11,16 @@
   --color-success: #1d6f42;
   --radius: 10px;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.1);
+  --transition-fast: 0.15s ease;
 }
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -22,6 +28,7 @@ body {
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
   background: var(--color-bg);
   color: var(--color-text);
+  line-height: 1.55;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -29,6 +36,13 @@ body {
 
 a {
   color: var(--color-primary);
+  transition: color var(--transition-fast);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 header.site-header {
@@ -74,10 +88,15 @@ nav.navbar {
   background: transparent;
   border: none;
   cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
 }
 
 .nav-links a:hover, .nav-links button:hover {
   background: var(--color-bg);
+}
+
+.nav-links .active:hover {
+  background: var(--color-primary-dark);
 }
 
 .nav-links .active {
@@ -104,6 +123,7 @@ main.container {
 
 .page-title {
   margin-bottom: 0.25rem;
+  font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
 }
 
 .page-subtitle {
@@ -119,6 +139,8 @@ main.container {
   box-shadow: var(--shadow);
   padding: 1.25rem;
   margin-bottom: 1.25rem;
+  overflow-x: auto;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
 }
 
 .card h2, .card h3 {
@@ -176,11 +198,19 @@ input, select, textarea {
   font-family: inherit;
   background: #fff;
   color: var(--color-text);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 input:focus, select:focus, textarea:focus {
   outline: 2px solid var(--color-primary);
   outline-offset: 1px;
+  border-color: var(--color-primary);
+}
+
+input:disabled, select:disabled, textarea:disabled {
+  background: var(--color-bg);
+  color: var(--color-muted);
+  cursor: not-allowed;
 }
 
 textarea {
@@ -200,10 +230,16 @@ textarea {
   font-size: 0.95rem;
   text-decoration: none;
   text-align: center;
+  transition: background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
 }
 
 .btn:hover {
   background: var(--color-primary-dark);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn:active {
+  transform: translateY(1px);
 }
 
 .btn.secondary {
@@ -212,8 +248,17 @@ textarea {
   border: 1px solid var(--color-primary);
 }
 
+.btn.secondary:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
 .btn.danger {
   background: var(--color-danger);
+}
+
+.btn.danger:hover {
+  background: #96291d;
 }
 
 .btn.small {
@@ -224,6 +269,8 @@ textarea {
 .btn[disabled] {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .inline-actions {
@@ -237,6 +284,12 @@ textarea {
   border-radius: 6px;
   margin-bottom: 1rem;
   font-size: 0.9rem;
+  animation: alert-in 0.2s ease;
+}
+
+@keyframes alert-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .alert.error {
@@ -275,6 +328,14 @@ th {
   font-weight: 600;
 }
 
+tbody tr {
+  transition: background var(--transition-fast);
+}
+
+tbody tr:hover {
+  background: var(--color-bg);
+}
+
 .pill {
   display: inline-block;
   padding: 0.15rem 0.6rem;
@@ -283,6 +344,7 @@ th {
   font-weight: 600;
   background: #eef4fb;
   color: #2c5c8a;
+  white-space: nowrap;
 }
 
 .pill.status-SUBMITTED { background: #eef4fb; color: #2c5c8a; }
@@ -345,4 +407,36 @@ footer.site-footer {
   font-size: 0.8rem;
   color: var(--color-muted);
   margin-top: 0.25rem;
+}
+
+@media (max-width: 640px) {
+  nav.navbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.65rem 1rem;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+
+  main.container {
+    padding: 1.1rem 0.9rem 2.25rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .chart-wrap {
+    height: 200px;
+  }
+
+  .inline-actions {
+    flex-direction: column;
+  }
+
+  .inline-actions .btn {
+    width: 100%;
+  }
 }

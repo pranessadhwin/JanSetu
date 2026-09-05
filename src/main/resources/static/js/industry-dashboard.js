@@ -28,7 +28,7 @@ async function loadSolutions() {
         (s) => `
         <div class="card">
           <h3>${escapeHtml(s.solutionTitle)}</h3>
-          <p class="muted">For: <a href="challenge.html?id=${s.challengeId}">${escapeHtml(s.challengeTitle)}</a> · <span class="pill">${s.domain || "-"}</span></p>
+          <p class="muted">For: <a href="challenge.html?id=${s.challengeId}">${escapeHtml(s.challengeTitle)}</a> · <span class="pill">${s.domain ? formatEnum(s.domain) : "-"}</span></p>
           <p>${escapeHtml(s.solutionDescription)}</p>
           <p class="help-text"><strong>Team:</strong> ${escapeHtml(s.teamMembers || "Not specified")}</p>
           <p class="help-text"><strong>University:</strong> ${escapeHtml(s.universityName)}</p>
@@ -36,7 +36,7 @@ async function loadSolutions() {
             <div>
               <label>Support type</label>
               <select class="engagement-type">
-                ${ENGAGEMENT_TYPES.map((t) => `<option value="${t}">${t}</option>`).join("")}
+                ${ENGAGEMENT_TYPES.map((t) => `<option value="${t}">${formatEnum(t)}</option>`).join("")}
               </select>
             </div>
             <div>
@@ -94,7 +94,7 @@ async function loadEngagements() {
           <td><a href="challenge.html?id=${e.challengeId}">${escapeHtml(e.challengeTitle)}</a></td>
           <td>${escapeHtml(e.universityName)}</td>
           <td>${escapeHtml(e.solutionTitle || "-")}</td>
-          <td><span class="pill">${e.engagementType}</span></td>
+          <td><span class="pill">${formatEnum(e.engagementType)}</span></td>
           <td>${escapeHtml(e.notes || "-")}</td>
           <td>${formatDate(e.createdAt)}</td>
         </tr>`
