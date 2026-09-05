@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report an Issue — JanSetu</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="container">
+    <h1 class="page-title">Report a civic challenge</h1>
+    <p class="page-subtitle">Describe the issue, pinpoint its location, and attach photos or videos as evidence.</p>
+
+    <div class="card" style="max-width:600px;">
+      <div id="alert-box"></div>
+      <form id="challenge-form" class="stacked" enctype="multipart/form-data">
+        <div>
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" required />
+        </div>
+        <div>
+          <label for="description">Description</label>
+          <textarea id="description" name="description" required></textarea>
+        </div>
+        <div>
+          <label for="address">Address</label>
+          <input type="text" id="address" name="address" required />
+        </div>
+        <div class="grid grid-2" style="gap:0.9rem;">
+          <div>
+            <label for="latitude">Latitude</label>
+            <input type="number" step="any" id="latitude" name="latitude" required />
+          </div>
+          <div>
+            <label for="longitude">Longitude</label>
+            <input type="number" step="any" id="longitude" name="longitude" required />
+          </div>
+        </div>
+        <button type="button" class="btn secondary small" id="use-location-btn">📍 Use my current location</button>
+        <div>
+          <label for="files">Photos / videos (optional)</label>
+          <input type="file" id="files" name="files" multiple accept="image/*,video/*" />
+        </div>
+        <button type="submit" class="btn" id="submit-btn">Submit challenge</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/submit-challenge.js"></script>
+</body>
+</html>

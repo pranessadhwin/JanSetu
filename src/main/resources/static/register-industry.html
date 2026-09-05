@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register as Industry — JanSetu</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="container">
+    <h1 class="page-title">Register your organization</h1>
+    <p class="page-subtitle">Create an account to mentor, fund, prototype, or deploy university-proposed solutions. A Super Admin must approve it before you can log in.</p>
+
+    <div class="card" style="max-width:520px;">
+      <div id="alert-box"></div>
+      <form id="register-form" class="stacked">
+        <div>
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div>
+          <label for="email">Login email</label>
+          <input type="email" id="email" name="email" required autocomplete="email" />
+        </div>
+        <div>
+          <label for="phone">Phone (optional)</label>
+          <input type="tel" id="phone" name="phone" />
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required minlength="6" autocomplete="new-password" />
+          <p class="help-text">At least 6 characters.</p>
+        </div>
+        <div>
+          <label for="industryName">Organization name</label>
+          <input type="text" id="industryName" name="industryName" required />
+        </div>
+        <div>
+          <label for="sector">Sector (optional)</label>
+          <input type="text" id="sector" name="sector" placeholder="e.g. Renewable Energy, FinTech, Agritech" />
+        </div>
+        <div>
+          <label for="contactEmail">Organization contact email (optional)</label>
+          <input type="email" id="contactEmail" name="contactEmail" />
+        </div>
+        <div>
+          <label for="contactPhone">Organization contact phone (optional)</label>
+          <input type="tel" id="contactPhone" name="contactPhone" />
+        </div>
+        <button type="submit" class="btn" id="register-submit">Submit for approval</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/register-industry.js"></script>
+</body>
+</html>

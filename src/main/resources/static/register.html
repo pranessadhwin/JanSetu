@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — JanSetu</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="container">
+    <h1 class="page-title">Join JanSetu</h1>
+    <p class="page-subtitle">Choose the type of account that fits you.</p>
+
+    <section class="grid grid-3">
+      <div class="card">
+        <h3>🙋 Citizen / Local Body</h3>
+        <p class="muted">Report civic challenges — education, healthcare, agriculture, water, sanitation, and more.</p>
+        <a class="btn" href="register-citizen.html">Register as citizen</a>
+      </div>
+      <div class="card">
+        <h3>🎓 University (HEI)</h3>
+        <p class="muted">Get matched to problems by expertise, claim challenges, and propose solutions with student/faculty teams.</p>
+        <a class="btn" href="register-university.html">Register as university</a>
+        <p class="help-text">Requires Super Admin approval before login.</p>
+      </div>
+      <div class="card">
+        <h3>🏭 Industry / Startup / CSR</h3>
+        <p class="muted">Mentor, fund, prototype, or deploy university-proposed solutions.</p>
+        <a class="btn" href="register-industry.html">Register as industry</a>
+        <p class="help-text">Requires Super Admin approval before login.</p>
+      </div>
+    </section>
+
+    <p class="help-text">Already registered? <a href="login.html">Login</a>.</p>
+  </main>
+
+  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script>renderNav("register");</script>
+</body>
+</html>

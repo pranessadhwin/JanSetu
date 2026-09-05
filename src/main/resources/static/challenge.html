@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Challenge Details — JanSetu</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="container">
+    <div id="alert-box"></div>
+    <div id="challenge-content" class="hidden">
+      <h1 class="page-title" id="c-title"></h1>
+      <p class="page-subtitle" id="c-meta"></p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Details</h3>
+          <p id="c-description"></p>
+          <p><strong>Address:</strong> <span id="c-address"></span></p>
+          <p><strong>Coordinates:</strong> <span id="c-coords"></span></p>
+          <p><strong>Domain:</strong> <span id="c-domain"></span> <span id="c-confidence" class="muted"></span></p>
+          <p><strong>Status:</strong> <span id="c-status"></span></p>
+        </div>
+        <div class="card">
+          <h3>Attachments</h3>
+          <div id="c-media" class="thumb-list"></div>
+          <p id="c-media-empty" class="muted hidden">No attachments were uploaded.</p>
+        </div>
+      </div>
+
+      <div class="card hidden" id="override-card">
+        <h3>Override classification (Super Admin)</h3>
+        <form id="override-form" class="stacked">
+          <div>
+            <label for="override-domain">Domain</label>
+            <select id="override-domain"></select>
+          </div>
+          <button type="submit" class="btn" id="override-submit">Save override</button>
+        </form>
+        <div id="override-alert"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/challenge-detail.js"></script>
+</body>
+</html>

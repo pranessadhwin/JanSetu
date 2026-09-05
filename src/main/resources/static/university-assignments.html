@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignments — JanSetu</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="container">
+    <h1 class="page-title">University dashboard</h1>
+    <p class="page-subtitle">Claim challenges that match your expertise and propose solutions with your student/faculty teams.</p>
+
+    <div id="alert-box"></div>
+
+    <div class="card">
+      <h3>Available problems to claim</h3>
+      <p class="muted">Challenges classified into your university's disciplines that haven't been claimed yet.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Challenge</th>
+            <th>Domain</th>
+            <th>Currently routed to</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="claimable-body"></tbody>
+      </table>
+      <div id="claimable-empty" class="empty-state hidden">No matching unclaimed challenges right now.</div>
+    </div>
+
+    <div class="card">
+      <h3>My claimed assignments</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Challenge</th>
+            <th>Domain</th>
+            <th>Status</th>
+            <th>Solution</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="assignments-body"></tbody>
+      </table>
+      <div id="empty-state" class="empty-state hidden">You haven't claimed any challenges yet.</div>
+    </div>
+
+    <div class="card hidden" id="solution-card">
+      <h3 id="solution-card-title">Propose a solution</h3>
+      <form id="solution-form" class="stacked">
+        <div>
+          <label for="solution-title">Solution title</label>
+          <input type="text" id="solution-title" required />
+        </div>
+        <div>
+          <label for="solution-description">Solution description</label>
+          <textarea id="solution-description" required></textarea>
+        </div>
+        <div>
+          <label for="team-members">Student / faculty team members</label>
+          <input type="text" id="team-members" placeholder="e.g. Dr. A Sharma (mentor), R Kumar, S Devi" />
+        </div>
+        <div class="inline-actions">
+          <button type="submit" class="btn" id="solution-submit">Submit solution</button>
+          <button type="button" class="btn secondary" id="solution-cancel">Cancel</button>
+        </div>
+      </form>
+      <div id="solution-alert"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/university-assignments.js"></script>
+</body>
+</html>

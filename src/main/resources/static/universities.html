@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partner Universities — JanSetu</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="container">
+    <h1 class="page-title">Partner universities</h1>
+    <p class="page-subtitle">Institutions collaborating with JanSetu to resolve civic challenges.</p>
+
+    <div class="card" style="max-width:320px;">
+      <label for="discipline-filter">Filter by discipline</label>
+      <select id="discipline-filter">
+        <option value="">All disciplines</option>
+      </select>
+    </div>
+
+    <div id="alert-box"></div>
+    <section class="grid grid-3" id="universities-grid"></section>
+  </main>
+
+  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/universities.js"></script>
+</body>
+</html>

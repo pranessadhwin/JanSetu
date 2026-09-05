@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register as University — JanSetu</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="container">
+    <h1 class="page-title">Register your university</h1>
+    <p class="page-subtitle">Create an admin account for your institution. A Super Admin must approve it before you can log in.</p>
+
+    <div class="card" style="max-width:520px;">
+      <div id="alert-box"></div>
+      <form id="register-form" class="stacked">
+        <div>
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email" />
+        </div>
+        <div>
+          <label for="phone">Phone (optional)</label>
+          <input type="tel" id="phone" name="phone" />
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required minlength="6" autocomplete="new-password" />
+          <p class="help-text">At least 6 characters.</p>
+        </div>
+        <div>
+          <label for="university">University</label>
+          <select id="university" name="university" required>
+            <option value="">Loading universities...</option>
+          </select>
+        </div>
+        <button type="submit" class="btn" id="register-submit">Submit for approval</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/register-university.js"></script>
+</body>
+</html>

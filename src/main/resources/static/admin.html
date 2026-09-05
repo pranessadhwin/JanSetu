@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — JanSetu</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="container">
+    <h1 class="page-title">Administration</h1>
+    <p class="page-subtitle">Approve new accounts and reassign university assignments as needed.</p>
+
+    <div id="approval-alert"></div>
+    <div class="card">
+      <h3>Pending account approvals</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Organization</th>
+            <th>Requested</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="pending-users-body"></tbody>
+      </table>
+      <div id="pending-empty-state" class="empty-state hidden">No pending account approvals.</div>
+    </div>
+
+    <h2 class="page-title" style="font-size:1.3rem;">University assignments</h2>
+    <p class="page-subtitle">Review any university's assignments and reassign them if needed.</p>
+
+    <div class="card" style="max-width:420px;">
+      <label for="university-id">University ID</label>
+      <div class="inline-actions">
+        <input type="number" id="university-id" min="1" placeholder="e.g. 1" />
+        <button class="btn secondary" id="load-btn">Load assignments</button>
+      </div>
+    </div>
+
+    <div id="alert-box"></div>
+
+    <div class="card hidden" id="assignments-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Challenge</th>
+            <th>Domain</th>
+            <th>University</th>
+            <th>Status</th>
+            <th>Notes</th>
+            <th>Reassign to</th>
+          </tr>
+        </thead>
+        <tbody id="assignments-body"></tbody>
+      </table>
+      <div id="empty-state" class="empty-state hidden">No assignments found for this university yet.</div>
+    </div>
+  </main>
+
+  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

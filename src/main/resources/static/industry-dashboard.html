@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Industry Opportunities — JanSetu</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="container">
+    <h1 class="page-title">Solutions ready for industry support</h1>
+    <p class="page-subtitle">Universities have proposed these solutions. Pick one to mentor, fund, prototype, or deploy.</p>
+
+    <div id="alert-box"></div>
+    <section class="grid grid-2" id="solutions-grid"></section>
+    <div id="solutions-empty" class="empty-state hidden">No proposed solutions are available yet. Check back soon.</div>
+
+    <h2 class="page-title" style="font-size:1.3rem;">My engagements</h2>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Challenge</th>
+            <th>University</th>
+            <th>Solution</th>
+            <th>Type</th>
+            <th>Notes</th>
+            <th>Since</th>
+          </tr>
+        </thead>
+        <tbody id="engagements-body"></tbody>
+      </table>
+      <div id="engagements-empty" class="empty-state hidden">You haven't engaged with any solutions yet.</div>
+    </div>
+  </main>
+
+  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/industry-dashboard.js"></script>
+</body>
+</html>
