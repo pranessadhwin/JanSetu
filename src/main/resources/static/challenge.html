@@ -44,10 +44,15 @@
               </tr>
               <tr>
                 <td style="font-weight:600;color:var(--clr-text);padding-left:0;">Domain</td>
-                <td>
-                  <span id="c-domain"></span>
-                  <span id="c-confidence" class="muted" style="font-size:0.8rem;"></span>
-                </td>
+                <td id="c-domain" style="color:var(--clr-text-2);"></td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;color:var(--clr-text);padding-left:0;">Resolution track</td>
+                <td id="c-track" style="color:var(--clr-text-2);"></td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;color:var(--clr-text);padding-left:0;">Routed to</td>
+                <td id="c-routed-to" style="color:var(--clr-text-2);"></td>
               </tr>
               <tr>
                 <td style="font-weight:600;color:var(--clr-text);padding-left:0;border-bottom:none;">Status</td>
@@ -78,6 +83,13 @@
           <div>
             <label for="override-domain">Domain</label>
             <select id="override-domain"></select>
+          </div>
+          <div>
+            <label for="override-track">Resolution track</label>
+            <select id="override-track">
+              <option value="MUNICIPAL_ROUTINE">Municipal Routine (local body)</option>
+              <option value="INNOVATION_REQUIRED">Innovation Required (university)</option>
+            </select>
           </div>
           <button type="submit" class="btn" id="override-submit">Save Override</button>
         </form>

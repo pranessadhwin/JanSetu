@@ -61,9 +61,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: var(--clr-primary); text-decoration: none; }
+a { color: var(--clr-primary); text-decoration: none; transition: color var(--transition); }
 a:hover { color: var(--clr-primary-dark); }
 img, video { display: block; max-width: 100%; }
+
+:focus-visible {
+  outline: 2px solid var(--clr-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 
 /* ── Animations ────────────────────────────────────────────── */
 @keyframes fadeUp {
@@ -154,6 +160,10 @@ nav.navbar {
 .nav-links button:hover {
   background: var(--clr-primary-light);
   color: var(--clr-primary-dark);
+}
+
+.nav-links .active:hover {
+  background: var(--clr-primary-dark);
 }
 
 .nav-links .active {
@@ -269,6 +279,7 @@ main.container {
   box-shadow: var(--shadow-sm);
   padding: 1.5rem;
   margin-bottom: 1.25rem;
+  overflow-x: auto;
   transition: box-shadow var(--transition), transform var(--transition);
 }
 
@@ -498,6 +509,14 @@ textarea:hover {
   border-color: var(--clr-border-strong);
 }
 
+input:not([type='file']):not([type='checkbox']):not([type='radio']):disabled,
+select:disabled,
+textarea:disabled {
+  background: var(--clr-surface-2);
+  color: var(--clr-muted);
+  cursor: not-allowed;
+}
+
 textarea {
   resize: vertical;
   min-height: 100px;
@@ -628,6 +647,7 @@ td {
   color: var(--clr-text-2);
 }
 
+tbody tr { transition: background var(--transition); }
 tbody tr:last-child td { border-bottom: none; }
 tbody tr:hover { background: var(--clr-surface-2); }
 
@@ -642,6 +662,9 @@ tbody tr:hover { background: var(--clr-surface-2); }
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  white-space: nowrap;
+  background: var(--clr-info-light);
+  color: var(--clr-info);
 }
 
 .pill.status-SUBMITTED  { background: var(--clr-info-light);    color: var(--clr-info);    border: 1px solid #cfe0f2; }
@@ -763,4 +786,36 @@ footer.site-footer strong { color: var(--clr-primary-dark); }
   .auth-card { border-radius: var(--radius-lg); }
   nav.navbar { padding: 0 1rem; }
   .page-title { font-size: 1.5rem; }
+}
+
+@media (max-width: 640px) {
+  nav.navbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.65rem 1rem;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+
+  main.container {
+    padding: 1.1rem 0.9rem 2.25rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .chart-wrap {
+    height: 200px;
+  }
+
+  .inline-actions {
+    flex-direction: column;
+  }
+
+  .inline-actions .btn {
+    width: 100%;
+  }
 }

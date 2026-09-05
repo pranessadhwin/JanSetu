@@ -19,4 +19,5 @@ public class AuthResponse {
     private Role role;
     private Long universityId;
     private Long industryId;
+    private Long localBodyId;
 }

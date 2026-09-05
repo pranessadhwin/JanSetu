@@ -10,6 +10,7 @@ function renderNav(activeId) {
   const links = [
     { id: "home",         href: "index.html",       label: "Home" },
     { id: "universities", href: "universities.html", label: "Universities" },
+    { id: "local-bodies", href: "local-bodies.html", label: "Local Bodies" },
   ];
 
   if (session?.token) {
@@ -22,6 +23,9 @@ function renderNav(activeId) {
     }
     if (session.role === "INDUSTRY") {
       links.push({ id: "industry-dashboard", href: "industry-dashboard.html", label: "Opportunities" });
+    }
+    if (session.role === "LOCAL_BODY_ADMIN") {
+      links.push({ id: "local-body-assignments", href: "local-body-assignments.html", label: "Local Issues" });
     }
     if (session.role === "SUPER_ADMIN") {
       links.push({ id: "admin", href: "admin.html", label: "Admin" });
@@ -38,7 +42,7 @@ function renderNav(activeId) {
   const authHtml = session?.token
     ? `<span class="nav-user">
          <span>${escapeHtml(session.name)}</span>
-         <span class="badge-role">${session.role.replace(/_/g, " ")}</span>
+         <span class="badge-role">${formatEnum(session.role)}</span>
        </span>
        <button id="nav-logout-btn">Logout</button>`
     : `<a href="login.html" class="${activeId === "login" ? "active" : ""}">Login</a>

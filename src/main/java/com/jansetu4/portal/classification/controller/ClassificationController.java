@@ -28,7 +28,7 @@ public class ClassificationController {
             @Valid @RequestBody ClassificationOverrideRequest request) {
         return ResponseEntity.ok(ApiResponse.success(
                 "Classification overridden successfully",
-                classificationService.overrideClassification(challengeId, request.getDomain())
+                classificationService.overrideClassification(challengeId, request.getDomain(), request.getResolutionTrack())
         ));
     }
 }

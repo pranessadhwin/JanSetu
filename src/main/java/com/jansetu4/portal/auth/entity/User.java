@@ -55,6 +55,9 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "industry_id")
     private Long industryId;
 
+    @Column(name = "local_body_id")
+    private Long localBodyId;
+
     @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {

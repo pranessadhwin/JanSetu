@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Issues — JanSetu</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="container">
+    <h1 class="page-title">Assigned local issues</h1>
+    <p class="page-subtitle">Routine civic issues auto-routed to your department. Mark them resolved once handled.</p>
+
+    <div id="alert-box"></div>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Challenge</th>
+            <th>Domain</th>
+            <th>Status</th>
+            <th>Resolution</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="assignments-body"></tbody>
+      </table>
+      <div id="empty-state" class="empty-state hidden">No issues have been routed to your department yet.</div>
+    </div>
+
+    <div class="card hidden" id="resolve-card">
+      <h3>Mark issue resolved</h3>
+      <form id="resolve-form" class="stacked">
+        <div>
+          <label for="resolution-notes">Resolution notes</label>
+          <textarea id="resolution-notes" required placeholder="What was done to fix this issue?"></textarea>
+        </div>
+        <div class="inline-actions">
+          <button type="submit" class="btn" id="resolve-submit">Mark resolved</button>
+          <button type="button" class="btn secondary" id="resolve-cancel">Cancel</button>
+        </div>
+      </form>
+      <div id="resolve-alert"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/local-body-assignments.js"></script>
+</body>
+</html>

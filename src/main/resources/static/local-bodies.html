@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Government Bodies — JanSetu</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="container">
+    <h1 class="page-title">Local government bodies</h1>
+    <p class="page-subtitle">Routine civic issues (potholes, streetlights, water supply, etc.) are routed directly to these departments — no research or innovation needed.</p>
+
+    <div class="card" style="max-width:320px;">
+      <label for="discipline-filter">Filter by domain</label>
+      <select id="discipline-filter">
+        <option value="">All domains</option>
+      </select>
+    </div>
+
+    <div id="alert-box"></div>
+    <section class="grid grid-3" id="local-bodies-grid"></section>
+  </main>
+
+  <footer class="site-footer">JanSetu — Civic engagement platform</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/local-bodies.js"></script>
+</body>
+</html>

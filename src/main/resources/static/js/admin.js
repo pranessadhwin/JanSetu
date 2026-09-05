@@ -21,7 +21,7 @@ async function loadPendingUsers() {
         <tr>
           <td>${escapeHtml(u.name)}</td>
           <td>${escapeHtml(u.email)}</td>
-          <td><span class="pill">${u.role.replace("_", " ")}</span></td>
+          <td><span class="pill">${formatEnum(u.role)}</span></td>
           <td>${escapeHtml(u.organizationName || "-")}</td>
           <td>${formatDate(u.createdAt)}</td>
           <td>
@@ -108,9 +108,9 @@ function renderRows(assignments) {
       (a) => `
       <tr>
         <td><a href="challenge.html?id=${a.challengeId}">${escapeHtml(a.challengeTitle)}</a></td>
-        <td><span class="pill">${a.domain}</span></td>
+        <td><span class="pill">${formatEnum(a.domain)}</span></td>
         <td>${escapeHtml(a.universityName)}</td>
-        <td><span class="pill status-${a.status}">${a.status}</span></td>
+        <td><span class="pill status-${a.status}">${formatEnum(a.status)}</span></td>
         <td>${escapeHtml(a.notes || "-")}</td>
         <td>
           <div class="inline-actions">

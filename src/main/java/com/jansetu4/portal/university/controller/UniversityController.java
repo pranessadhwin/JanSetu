@@ -1,7 +1,5 @@
 package com.jansetu4.portal.university.controller;
 
-import com.jansetu4.portal.auth.AuthService;
-import com.jansetu4.portal.auth.dto.UniversityAdminRegisterRequest;
 import com.jansetu4.portal.auth.entity.User;
 import com.jansetu4.portal.common.ApiResponse;
 import com.jansetu4.portal.university.dto.ProposeSolutionRequest;
@@ -11,7 +9,6 @@ import com.jansetu4.portal.university.dto.UniversityResponse;
 import com.jansetu4.portal.university.service.UniversityService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -31,15 +28,6 @@ import java.util.List;
 public class UniversityController {
 
     private final UniversityService universityService;
-    private final AuthService authService;
-
-    @PostMapping("/university/register")
-    public ResponseEntity<ApiResponse<Object>> registerUniversityAdmin(
-            @Valid @RequestBody UniversityAdminRegisterRequest request) {
-        authService.registerUniversityAdmin(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.success(
-                "Registration submitted. A Super Admin must approve your account before you can log in.", null));
-    }
 
     @GetMapping("/universities")
     public ResponseEntity<ApiResponse<List<UniversityResponse>>> getUniversities(

@@ -9,7 +9,7 @@ const alertBox = document.getElementById("alert-box");
 const grid = document.getElementById("universities-grid");
 const filter = document.getElementById("discipline-filter");
 
-filter.innerHTML += DOMAINS.map((d) => `<option value="${d}">${d}</option>`).join("");
+filter.innerHTML += DOMAINS.map((d) => `<option value="${d}">${formatEnum(d)}</option>`).join("");
 
 async function loadUniversities() {
   clearAlert(alertBox);
@@ -27,7 +27,7 @@ async function loadUniversities() {
         <div class="card">
           <h3>${escapeHtml(u.name)}</h3>
           <p class="muted">${escapeHtml(u.location || "")}</p>
-          <p>${(u.disciplines || []).map((d) => `<span class="pill">${d}</span>`).join(" ")}</p>
+          <p>${(u.disciplines || []).map((d) => `<span class="pill">${formatEnum(d)}</span>`).join(" ")}</p>
           <p class="help-text">${escapeHtml(u.contactEmail || "")} ${u.contactPhone ? "· " + escapeHtml(u.contactPhone) : ""}</p>
         </div>`
       )

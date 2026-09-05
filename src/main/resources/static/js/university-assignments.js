@@ -36,7 +36,7 @@ async function loadClaimable() {
         (a) => `
         <tr>
           <td><a href="challenge.html?id=${a.challengeId}">${escapeHtml(a.challengeTitle)}</a></td>
-          <td><span class="pill">${a.domain}</span></td>
+          <td><span class="pill">${formatEnum(a.domain)}</span></td>
           <td>${escapeHtml(a.universityName)}</td>
           <td><button class="btn small" data-id="${a.id}" data-action="claim">Claim this problem</button></td>
         </tr>`
@@ -83,8 +83,8 @@ async function loadMyAssignments() {
         return `
         <tr>
           <td><a href="challenge.html?id=${a.challengeId}">${escapeHtml(a.challengeTitle)}</a></td>
-          <td><span class="pill">${a.domain}</span></td>
-          <td><span class="pill status-${a.status}">${a.status}</span></td>
+          <td><span class="pill">${formatEnum(a.domain)}</span></td>
+          <td><span class="pill status-${a.status}">${formatEnum(a.status)}</span></td>
           <td>${solutionCell}</td>
           <td>${actionCell}</td>
         </tr>`;

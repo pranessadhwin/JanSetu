@@ -55,9 +55,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.GET, "/", "/*.html", "/css/**", "/js/**", "/favicon.ico").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/citizen/register", "/api/auth/login",
-                                "/api/university/register", "/api/industry/register").permitAll()
+                                "/api/industry/register").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/analytics/**", "/uploads/**", "/api/media/**",
-                                "/api/universities").permitAll()
+                                "/api/universities", "/api/local-bodies").permitAll()
                         .anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
